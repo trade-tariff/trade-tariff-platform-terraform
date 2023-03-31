@@ -1,0 +1,20 @@
+---
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.77.1
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_tflint
+      - id: terraform_docs
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
+
+  - repo: local
+    hooks:
+      - id: circleci-config-validate
+        name: Validate CircleCI Config
+        entry: .circleci/validate
+        language: script
+        files: .circleci/config.yml

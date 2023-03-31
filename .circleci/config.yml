@@ -1,0 +1,46 @@
+version: 2.1
+
+orbs:
+  terraform: "circleci/terraform@3.1.0"
+
+executors:
+  default:
+    working_directory: "/tmp/terraform"
+    resource_class: small
+    docker:
+      - image: hashicorp/terraform:1.4.0
+
+jobs:
+  fmt_validate_terraform:
+    executor: default
+    steps:
+      - checkout
+      - terraform/init
+      - terraform/fmt
+      - terraform/validate
+
+  plan_terraform:
+    executor: default
+    steps:
+      - checkout
+      - terraform/init
+      - terraform/plan
+
+workflows:
+  version: 2
+  terraform:
+    jobs:
+      - fmt_validate_terraform:
+          context: trade-tariff-bot-github
+          filters:
+            branches:
+              ignore:
+                - main
+      - plan_terraform:
+          context: trade-tariff-bot-github
+          requires:
+            - fmt_validate_terraform
+          filters:
+            branches:
+              ignore:
+                - main
