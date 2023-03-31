@@ -14,4 +14,6 @@ module "opensearch" {
   create_master_user = true
 
   ssm_secret_name = "/${var.environment}/common/ELASTICSEARCH_URL"
+
+  tags = local.tags
 }

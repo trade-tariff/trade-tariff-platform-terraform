@@ -8,3 +8,9 @@ variable "waf_rpm_limit" {
   type        = number
   default     = 100
 }
+
+variable "new_relic_licence_key" {
+  description = "New Relic API key."
+  type        = string
+  sensitive   = true
+}
