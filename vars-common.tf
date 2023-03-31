@@ -2,7 +2,7 @@ locals {
   common_vars = [
     {
       name  = "/${local.environment}/common/API_SERVICE_BACKEND_URL_OPTIONS"
-      value = "{\"uk\":\"http://tariff-uk-backend-dev.apps.internal:8080\",\"xi\":\"http://tariff-xi-backend-dev.apps.internal:8080\"}"
+      value = "{\"uk\":\"http://tariff-uk-backend-${local.environment-key}.apps.internal:8080\",\"xi\":\"http://tariff-xi-backend-${local.environment-key}.apps.internal:8080\"}"
     },
     {
       name  = "/${local.environment}/common/GOVUK_WEBSITE_ROOT"
@@ -26,7 +26,7 @@ locals {
     },
     {
       name  = "/${local.environment}/common/PLEK_SERVICE_SIGNON_URI"
-      value = "https://signon-dev.${local.paas_url}"
+      value = "https://signon-${local.environment-key}.${local.paas_url}"
     },
     {
       name  = "/${local.environment}/common/RUBYOPT"
