@@ -10,7 +10,7 @@ locals {
     },
     {
       name  = "/${local.environment}/admin/GOVUK_APP_DOMAIN"
-      value = "tariff-admin-dev.${local.paas_url}"
+      value = "tariff-admin-${local.environment_key}.${local.paas_url}"
     },
     {
       name  = "/${local.environment}/admin/MAX_THREADS"
@@ -18,7 +18,7 @@ locals {
     },
     {
       name  = "/${local.environment}/admin/PLEK_SERVICE_TARIFF_API_URI"
-      value = "http://tariff-uk-backend-dev.apps.internal:8080"
+      value = "http://tariff-uk-backend-${local.environment_key}.apps.internal:8080"
     },
     {
       name  = "/${local.environment}/admin/SECRET_KEY_BASE"

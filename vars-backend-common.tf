@@ -18,7 +18,8 @@ locals {
     },
     {
       name  = "/${local.environment}/backend/common/FRONTEND_HOST"
-      value = "https://dev.${local.base_url}/"
+      value = "https://${local.environment-key}.${local.base_url}/"
+      # TODO: scope this due to www
     },
     {
       name  = "/${local.environment}/backend/common/MALLOC_ARENA_MAX"
