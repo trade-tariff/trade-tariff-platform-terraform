@@ -43,20 +43,32 @@ Repository to store the Terraform for AWS infrastructure.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | `"eu-west-2"` | no |
 | <a name="input_new_relic_licence_key"></a> [new\_relic\_licence\_key](#input\_new\_relic\_licence\_key) | New Relic API key. | `string` | n/a | yes |
 | <a name="input_tariff_admin_bearer_token"></a> [tariff\_admin\_bearer\_token](#input\_tariff\_admin\_bearer\_token) | Admin tool bearer token. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_id"></a> [tariff\_admin\_oauth\_id](#input\_tariff\_admin\_oauth\_id) | Admin tool OAuth ID. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_secret"></a> [tariff\_admin\_oauth\_secret](#input\_tariff\_admin\_oauth\_secret) | Admin tool OAuth secret. | `string` | n/a | yes |
 | <a name="input_tariff_admin_secret_key_base"></a> [tariff\_admin\_secret\_key\_base](#input\_tariff\_admin\_secret\_key\_base) | Admin tool secret key base. | `string` | n/a | yes |
 | <a name="input_tariff_admin_sentry_dsn"></a> [tariff\_admin\_sentry\_dsn](#input\_tariff\_admin\_sentry\_dsn) | Admin tool Sentry DSN. | `string` | n/a | yes |
+| <a name="input_tariff_backend_oauth_id"></a> [tariff\_backend\_oauth\_id](#input\_tariff\_backend\_oauth\_id) | Tariff Backend OAuth ID. | `string` | n/a | yes |
+| <a name="input_tariff_backend_oauth_secret"></a> [tariff\_backend\_oauth\_secret](#input\_tariff\_backend\_oauth\_secret) | Tariff Backend OAuth secret. | `string` | n/a | yes |
 | <a name="input_tariff_backend_secret_key_base"></a> [tariff\_backend\_secret\_key\_base](#input\_tariff\_backend\_secret\_key\_base) | Backend secret key base. | `string` | n/a | yes |
 | <a name="input_tariff_backend_sentry_dsn"></a> [tariff\_backend\_sentry\_dsn](#input\_tariff\_backend\_sentry\_dsn) | Backend Sentry DSN. | `string` | n/a | yes |
+| <a name="input_tariff_backend_sync_email"></a> [tariff\_backend\_sync\_email](#input\_tariff\_backend\_sync\_email) | Tariff Sync email. | `string` | n/a | yes |
+| <a name="input_tariff_backend_sync_host"></a> [tariff\_backend\_sync\_host](#input\_tariff\_backend\_sync\_host) | Tariff Sync host. | `string` | n/a | yes |
+| <a name="input_tariff_backend_sync_password"></a> [tariff\_backend\_sync\_password](#input\_tariff\_backend\_sync\_password) | Tariff Sync password. | `string` | n/a | yes |
+| <a name="input_tariff_backend_sync_username"></a> [tariff\_backend\_sync\_username](#input\_tariff\_backend\_sync\_username) | Tariff Sync username. | `string` | n/a | yes |
 | <a name="input_tariff_duty_calculator_secret_key_base"></a> [tariff\_duty\_calculator\_secret\_key\_base](#input\_tariff\_duty\_calculator\_secret\_key\_base) | Duty calculator secret key base. | `string` | n/a | yes |
 | <a name="input_tariff_duty_calculator_sentry_dsn"></a> [tariff\_duty\_calculator\_sentry\_dsn](#input\_tariff\_duty\_calculator\_sentry\_dsn) | Duty calculator Sentry DSN. | `string` | n/a | yes |
 | <a name="input_tariff_frontend_secret_key_base"></a> [tariff\_frontend\_secret\_key\_base](#input\_tariff\_frontend\_secret\_key\_base) | Frontend secret key base. | `string` | n/a | yes |
 | <a name="input_tariff_frontend_sentry_dsn"></a> [tariff\_frontend\_sentry\_dsn](#input\_tariff\_frontend\_sentry\_dsn) | Frontend Sentry DSN. | `string` | n/a | yes |
 | <a name="input_tariff_search_query_parser_sentry_dsn"></a> [tariff\_search\_query\_parser\_sentry\_dsn](#input\_tariff\_search\_query\_parser\_sentry\_dsn) | Search query parser Sentry DSN. | `string` | n/a | yes |
+| <a name="input_tariff_signon_active_record_derivation_salt"></a> [tariff\_signon\_active\_record\_derivation\_salt](#input\_tariff\_signon\_active\_record\_derivation\_salt) | Tariff Signon Active Record Encryption Key Derivation Salt. | `string` | n/a | yes |
+| <a name="input_tariff_signon_active_record_primary_key"></a> [tariff\_signon\_active\_record\_primary\_key](#input\_tariff\_signon\_active\_record\_primary\_key) | Tariff Signon Active Record Encryption Primary Key. | `string` | n/a | yes |
+| <a name="input_tariff_signon_devise_pepper"></a> [tariff\_signon\_devise\_pepper](#input\_tariff\_signon\_devise\_pepper) | Tariff Signon Devise Pepper. | `string` | n/a | yes |
+| <a name="input_tariff_signon_devise_secret_key"></a> [tariff\_signon\_devise\_secret\_key](#input\_tariff\_signon\_devise\_secret\_key) | Tariff Signon Devise Secret Key. | `string` | n/a | yes |
+| <a name="input_tariff_signon_redis_url"></a> [tariff\_signon\_redis\_url](#input\_tariff\_signon\_redis\_url) | Tariff Signon Redis URL. | `string` | n/a | yes |
+| <a name="input_tariff_signon_secret_key_base"></a> [tariff\_signon\_secret\_key\_base](#input\_tariff\_signon\_secret\_key\_base) | Tariff Signon Secret Key Base. | `string` | n/a | yes |
 | <a name="input_waf_rpm_limit"></a> [waf\_rpm\_limit](#input\_waf\_rpm\_limit) | Request per minute limit for the WAF. | `number` | `100` | no |
 
 ## Outputs

@@ -95,27 +95,27 @@ locals {
     },
     {
       name  = "/${var.environment}/backend/common/TARIFF_SYNC_EMAIL"
-      value = ""
+      value = var.tariff_backend_sync_email
     },
     {
       name  = "/${var.environment}/backend/common/TARIFF_SYNC_HOST"
-      value = ""
+      value = var.tariff_backend_sync_host
     },
     {
       name  = "/${var.environment}/backend/common/TARIFF_SYNC_PASSWORD"
-      value = ""
+      value = var.tariff_backend_sync_password
     },
     {
       name  = "/${var.environment}/backend/common/TARIFF_SYNC_USERNAME"
-      value = ""
+      value = var.tariff_backend_sync_username
     },
     {
       name  = "/${var.environment}/backend/common/TRADE_TARIFF_OAUTH_ID"
-      value = ""
+      value = var.tariff_backend_oauth_id
     },
     {
       name  = "/${var.environment}/backend/common/TRADE_TARIFF_OAUTH_SECRET"
-      value = ""
+      value = var.tariff_backend_oauth_secret
     },
     {
       name  = "/${var.environment}/backend/common/WEB_CONCURRENCY"
@@ -132,6 +132,42 @@ variable "tariff_backend_secret_key_base" {
 
 variable "tariff_backend_sentry_dsn" {
   description = "Backend Sentry DSN."
+  type        = string
+  sensitive   = true
+}
+
+variable "tariff_backend_sync_email" {
+  description = "Tariff Sync email."
+  type        = string
+  sensitive   = true
+}
+
+variable "tariff_backend_sync_host" {
+  description = "Tariff Sync host."
+  type        = string
+  sensitive   = true
+}
+
+variable "tariff_backend_sync_password" {
+  description = "Tariff Sync password."
+  type        = string
+  sensitive   = true
+}
+
+variable "tariff_backend_sync_username" {
+  description = "Tariff Sync username."
+  type        = string
+  sensitive   = true
+}
+
+variable "tariff_backend_oauth_id" {
+  description = "Tariff Backend OAuth ID."
+  type        = string
+  sensitive   = true
+}
+
+variable "tariff_backend_oauth_secret" {
+  description = "Tariff Backend OAuth secret."
   type        = string
   sensitive   = true
 }
