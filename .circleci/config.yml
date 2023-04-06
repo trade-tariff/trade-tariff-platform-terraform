@@ -44,17 +44,9 @@ workflows:
       - fmt_validate_terraform:
           context: trade-tariff-bot-aws-development
           environment: development
-          filters:
-            branches:
-              ignore:
-                - main
       - plan_terraform:
           name: development
           environment: development
           context: trade-tariff-bot-aws-development
           requires:
             - fmt_validate_terraform
-          filters:
-            branches:
-              ignore:
-                - main
