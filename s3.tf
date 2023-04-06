@@ -43,13 +43,13 @@ locals {
 
 resource "aws_s3_bucket" "this" {
   for_each = local.buckets
-  bucket   = each.value.name
+  bucket   = each.value
   tags     = local.tags
 }
 
 resource "aws_s3_bucket_acl" "this" {
   for_each = local.buckets
-  bucket   = each.value.id
+  bucket   = each.key
   acl      = "private"
 }
 

@@ -37,10 +37,6 @@ locals {
       value = "2"
     },
     {
-      name  = "/${var.environment}/frontend/MALLOC_ARENA_MAX"
-      value = "2"
-    },
-    {
       name  = "/${var.environment}/frontend/MAX_THREADS"
       value = "6"
     },
