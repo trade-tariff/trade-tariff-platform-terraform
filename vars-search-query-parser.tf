@@ -1,27 +1,27 @@
 locals {
   search_query_parser_vars = [
     {
-      name  = "${local.var_path}/SENTRY_DSN"
+      name  = "/${var.environment}/search_query_parser/SENTRY_DSN"
       value = var.tariff_search_query_parser_sentry_dsn
     },
     {
-      name  = "${local.var_path}/EXPAND_EQUIVALENT_SYNONYMS"
+      name  = "/${var.environment}/search_query_parser/EXPAND_EQUIVALENT_SYNONYMS"
       value = "false"
     },
     {
-      name  = "${local.var_path}/EXPAND_EXPLICIT_SYNONYMS"
+      name  = "/${var.environment}/search_query_parser/EXPAND_EXPLICIT_SYNONYMS"
       value = "true"
     },
     {
-      name  = "${local.var_path}/PACKAGE_BUCKET_NAME"
+      name  = "/${var.environment}/search_query_parser/PACKAGE_BUCKET_NAME"
       value = aws_s3_bucket.this["opensearch_packages"].id
     },
     {
-      name  = "${local.var_path}/SPELLING_CORRECTOR_BUCKET_NAME"
+      name  = "/${var.environment}/search_query_parser/SPELLING_CORRECTOR_BUCKET_NAME"
       value = aws_s3_bucket.this["search_configuration"].id
     },
     {
-      name  = "${local.var_path}/SYNONYM_PACKAGE_BUCKET_NAME"
+      name  = "/${var.environment}/search_query_parser/SYNONYM_PACKAGE_BUCKET_NAME"
       value = aws_s3_bucket.this["opensearch_packages"].id
     }
   ]

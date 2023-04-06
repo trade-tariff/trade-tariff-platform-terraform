@@ -13,18 +13,27 @@ executors:
 jobs:
   fmt_validate_terraform:
     executor: default
+    parameters:
+      environment:
+        type: string
     steps:
       - checkout
-      - terraform/init
+      - terraform/init:
+          backend_config_file: backends/<< parameters.environment >>.tfbackend
       - terraform/fmt
       - terraform/validate
 
   plan_terraform:
     executor: default
+    parameters:
+      environment:
+        type: string
     steps:
       - checkout
-      - terraform/init
-      - terraform/plan
+      - terraform/init:
+          backend_config_file: backends/<< parameters.environment >>.tfbackend
+      - terraform/plan:
+          backend_config_file: backends/<< parameters.environment >>.tfbackend
 
 workflows:
   version: 2
@@ -32,11 +41,13 @@ workflows:
     jobs:
       - fmt_validate_terraform:
           context: trade-tariff-bot-github
+          environment: development
           filters:
             branches:
               ignore:
                 - main
       - plan_terraform:
+          environment: development
           context: trade-tariff-bot-github
           requires:
             - fmt_validate_terraform

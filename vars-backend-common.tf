@@ -1,124 +1,124 @@
 locals {
   backend_common_vars = [
     {
-      name  = "/${local.environment}/backend/common/ALLOW_MISSING_MIGRATION_FILES"
+      name  = "/${var.environment}/backend/common/ALLOW_MISSING_MIGRATION_FILES"
       value = "true"
     },
     {
-      name  = "/${local.environment}/backend/common/AWS_BUCKET_NAME"
-      value = "trade-tariff-persistence-${local.environment}"
+      name  = "/${var.environment}/backend/common/AWS_BUCKET_NAME"
+      value = "trade-tariff-persistence-${var.environment}"
     },
     {
-      name  = "/${local.environment}/backend/common/BETA_SEARCH_MAX_HITS"
+      name  = "/${var.environment}/backend/common/BETA_SEARCH_MAX_HITS"
       value = "1000"
     },
     {
-      name  = "/${local.environment}/backend/common/DB_POOL"
+      name  = "/${var.environment}/backend/common/DB_POOL"
       value = "20"
     },
     {
-      name  = "/${local.environment}/backend/common/FRONTEND_HOST"
-      value = "https://${local.environment-key}.${local.base_url}/"
+      name  = "/${var.environment}/backend/common/FRONTEND_HOST"
+      value = "https://${local.environment_key}.${local.base_url}/"
       # TODO: scope this due to www
     },
     {
-      name  = "/${local.environment}/backend/common/MALLOC_ARENA_MAX"
+      name  = "/${var.environment}/backend/common/MALLOC_ARENA_MAX"
       value = "2"
     },
     {
-      name  = "/${local.environment}/backend/common/MAX_THREADS"
+      name  = "/${var.environment}/backend/common/MAX_THREADS"
       value = "6"
     },
     {
-      name  = "/${local.environment}/backend/common/NEW_RELIC_AGENT_ENABLED"
+      name  = "/${var.environment}/backend/common/NEW_RELIC_AGENT_ENABLED"
       value = "false"
     },
     {
-      name  = "/${local.environment}/backend/common/NEW_RELIC_APP_NAME"
-      value = "tariff-uk-backend-${local.environment}"
+      name  = "/${var.environment}/backend/common/NEW_RELIC_APP_NAME"
+      value = "tariff-uk-backend-${var.environment}"
     },
     {
-      name  = "/${local.environment}/backend/common/NEW_RELIC_DISTRIBUTED_TRACING"
+      name  = "/${var.environment}/backend/common/NEW_RELIC_DISTRIBUTED_TRACING"
       value = "true"
     },
     {
-      name  = "/${local.environment}/backend/common/PAAS_S3_SERVICE_NAME"
-      value = "tariff-pdf-${local.environment-key}"
+      name  = "/${var.environment}/backend/common/PAAS_S3_SERVICE_NAME"
+      value = "tariff-pdf-${local.environment_key}"
     },
     {
-      name  = "/${local.environment}/backend/common/RACK_TIMEOUT_SERVICE"
+      name  = "/${var.environment}/backend/common/RACK_TIMEOUT_SERVICE"
       value = "50"
     },
     {
-      name  = "/${local.environment}/backend/common/RACK_TIMEOUT_SERVICE_TIMEOUT"
+      name  = "/${var.environment}/backend/common/RACK_TIMEOUT_SERVICE_TIMEOUT"
       value = "50"
     },
     {
-      name  = "/${local.environment}/backend/common/RACK_TIMEOUT_WAIT_TIMEOUT"
+      name  = "/${var.environment}/backend/common/RACK_TIMEOUT_WAIT_TIMEOUT"
       value = "100"
     },
     {
-      name  = "/${local.environment}/backend/common/SECRET_KEY_BASE"
+      name  = "/${var.environment}/backend/common/SECRET_KEY_BASE"
       value = var.tariff_backend_secret_key_base
     },
     {
-      name  = "/${local.environment}/backend/common/SENTRY_DSN"
+      name  = "/${var.environment}/backend/common/SENTRY_DSN"
       value = var.tariff_backend_sentry_dsn
     },
     {
-      name  = "/${local.environment}/backend/common/SENTRY_PROJECT"
+      name  = "/${var.environment}/backend/common/SENTRY_PROJECT"
       value = "tariff-backend"
     },
     {
-      name  = "/${local.environment}/backend/common/SPELLING_CORRECTOR_BUCKET_NAME"
-      value = "trade-tariff-search-configuration-${local.environment}"
+      name  = "/${var.environment}/backend/common/SPELLING_CORRECTOR_BUCKET_NAME"
+      value = "trade-tariff-search-configuration-${var.environment}"
     },
     {
-      name  = "/${local.environment}/backend/common/STEMMING_EXCLUSION_REFERENCE_ANALYZER"
+      name  = "/${var.environment}/backend/common/STEMMING_EXCLUSION_REFERENCE_ANALYZER"
       value = "analyzers/F102794475"
     },
     {
-      name  = "/${local.environment}/backend/common/SYNONYM_REFERENCE_ANALYZER"
+      name  = "/${var.environment}/backend/common/SYNONYM_REFERENCE_ANALYZER"
       value = "analyzers/F135140295"
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_IGNORE_PRESENCE_ERRORS"
+      name  = "/${var.environment}/backend/common/TARIFF_IGNORE_PRESENCE_ERRORS"
       value = "1"
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_MEASURES_LOGGER"
+      name  = "/${var.environment}/backend/common/TARIFF_MEASURES_LOGGER"
       value = "1"
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_QUERY_SEARCH_PARSER_URL"
-      value = "http://tariff-search-query-parser-${local.environment-key}.apps.internal:8080/api/search/"
+      name  = "/${var.environment}/backend/common/TARIFF_QUERY_SEARCH_PARSER_URL"
+      value = "http://tariff-search-query-parser-${local.environment_key}.apps.internal:8080/api/search/"
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_SYNC_EMAIL"
+      name  = "/${var.environment}/backend/common/TARIFF_SYNC_EMAIL"
       value = ""
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_SYNC_HOST"
+      name  = "/${var.environment}/backend/common/TARIFF_SYNC_HOST"
       value = ""
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_SYNC_PASSWORD"
+      name  = "/${var.environment}/backend/common/TARIFF_SYNC_PASSWORD"
       value = ""
     },
     {
-      name  = "/${local.environment}/backend/common/TARIFF_SYNC_USERNAME"
+      name  = "/${var.environment}/backend/common/TARIFF_SYNC_USERNAME"
       value = ""
     },
     {
-      name  = "/${local.environment}/backend/common/TRADE_TARIFF_OAUTH_ID"
+      name  = "/${var.environment}/backend/common/TRADE_TARIFF_OAUTH_ID"
       value = ""
     },
     {
-      name  = "/${local.environment}/backend/common/TRADE_TARIFF_OAUTH_SECRET"
+      name  = "/${var.environment}/backend/common/TRADE_TARIFF_OAUTH_SECRET"
       value = ""
     },
     {
-      name  = "/${local.environment}/backend/common/WEB_CONCURRENCY"
+      name  = "/${var.environment}/backend/common/WEB_CONCURRENCY"
       value = "4"
     }
   ]
