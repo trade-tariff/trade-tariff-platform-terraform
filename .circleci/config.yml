@@ -45,7 +45,7 @@ workflows:
           context: trade-tariff-bot-aws-development
           environment: development
       - plan_terraform:
-          name: development
+          name: plan_development
           environment: development
           context: trade-tariff-bot-aws-development
           requires:
