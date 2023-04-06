@@ -25,10 +25,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Ignore TF backend files
-*.tfbackend
-
-
 # nix things
 .envrc
 .direnv/

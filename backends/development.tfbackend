@@ -1,0 +1,4 @@
+bucket  = "trade-tariff-terraform-state"
+key     = "development/terraform.tfstate"
+region  = "eu-west-2"
+encrypt = true
