@@ -9,6 +9,8 @@ executors:
     resource_class: small
     docker:
       - image: hashicorp/terraform:1.4.0
+    environment:
+      TF_IN_AUTOMATION: 1
 
 jobs:
   fmt_validate_terraform:
