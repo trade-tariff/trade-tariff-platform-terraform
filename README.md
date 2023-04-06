@@ -2,6 +2,48 @@
 
 Repository to store the Terraform for AWS infrastructure.
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/trade-tariff/trade-tariff-platform-terraform/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/trade-tariff/trade-tariff-platform-terraform/tree/main)
+
+## Making changes
+
+Any changes to the infrastructure must go through the pull request process.
+Terraform commands are run in CI automatically when commits are pushed to a
+branch, and the plan output is posted as a comment to an opened pull request.
+
+Once the changes are merged into main, they will be applied against development
+and staging environments (with smoke tests run against each). There is a manual
+gate against the production environment.
+
+## Running locally
+
+Much of the configuration can be tested via the use of the included
+[pre-commit](https://pre-commit.com/) hooks. It is recommended to run these
+as it will run `terraform fmt` and `validate` steps against your changes,
+catching any errors.
+
+Due to the number of variables in this repository, it is not recommended to run
+Terraform commands locally. To avoid having to input variables manually when
+running commands, consider creating `.tfvars` files for this purpose. They
+are `gitignore`d and should not be committed to this repository.
+
+If you need to run plans/applies locally, you will need **AWS credentials**
+configured before you can do so.
+
+## Environment separation
+
+This configuration makes use of a ["partial"](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#partial-configuration)
+backend, and the `-backend-config=PATH` switch to use separate backends. These
+can be found in the `/backends` subdirectory. For example, running against
+`development` is done like so:
+
+```sh
+terraform plan -backend-config=backends/development.tfbackend
+```
+
+The environments: `development`, `staging`, and `production`, have separate
+variables for changing the configuration on each environment. Different CircleCi
+contexts are used for each environment.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
