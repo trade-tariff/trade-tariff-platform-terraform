@@ -38,12 +38,29 @@ jobs:
       - terraform/plan:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
           out: tfplan
+      - persist_to_workspace:
+          root: .
+          paths:
+            - tfplan
+
+  comment:
+    executor: default
+    parameters:
+      environment:
+        type: string
+    steps:
+      - checkout
+      - terraform/init:
+          backend_config_file: backends/<< parameters.environment >>.tfbackend
       - run:
           name: Install dependencies
           command: apk add jq jo curl
+      - attach_workspace:
+          at: .
       - run:
           name: Comment on PR
-          command: ./.circleci/comment_plan.sh << parameters.environment >> tfplan
+          command: |
+            ./.circleci/comment_plan.sh << parameters.environment >> ./tfplan
 
   apply_terraform:
     executor: default
@@ -80,7 +97,17 @@ workflows:
           name: plan_development
           environment: development
           context: trade-tariff-bot-aws-development
-          requires: [fmt_validate_terraform]
+          requires: [fmt_validate_terraform, trade-tariff/hide-expired-comments]
+          filters:
+            branches:
+              ignore:
+                - main
+
+      - comment:
+          name: comment_development
+          environment: development
+          context: trade-tariff-bot-github
+          requires: [plan_development]
           filters:
             branches:
               ignore:
