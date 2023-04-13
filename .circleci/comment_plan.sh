@@ -14,6 +14,11 @@ if [ "$(echo "${pr_response}" | jq length)" -eq 0 ]; then
   exit 0
 fi
 
+if [ "$(echo "${pr_response}" | jq .message)" = "Bad credentials" ]; then
+  echo "Bad GitHub credentials; check the values of GITHUB_TOKEN and GITHUB_USER."
+  exit 1
+fi
+
 post_plan_comment() {
   pr_comment_url="$1"
   plan_output="$2"
