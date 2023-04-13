@@ -49,7 +49,7 @@ resource "aws_s3_bucket" "this" {
 
 resource "aws_s3_bucket_acl" "this" {
   for_each = local.buckets
-  bucket   = each.key
+  bucket   = each.value
   acl      = "private"
 }
 
@@ -65,8 +65,8 @@ resource "aws_s3_bucket_public_access_block" "this" {
 
 resource "aws_iam_policy" "this" {
   for_each    = local.buckets
-  name        = "${each.key}-bucket-policy-${var.environment}"
-  description = "Provides read and write access to ${replace(each.key, "-", " ")} bucket."
+  name        = "${replace(each.key, "_", "-")}-bucket-policy-${var.environment}"
+  description = "Provides read and write access to the ${replace(each.key, "_", " ")} bucket."
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

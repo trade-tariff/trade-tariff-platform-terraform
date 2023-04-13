@@ -34,8 +34,6 @@ post_plan_comment() {
         --data "$message"
 }
 
-echo "$pr_response"
-
 plan_output=$(jo body="\`\`\`\n$(terraform show -no-color "${terraform_plan}")")
 pr_comment_url=$(echo "${pr_response}" | jq --raw-output ".[].review_comments_url")
 
