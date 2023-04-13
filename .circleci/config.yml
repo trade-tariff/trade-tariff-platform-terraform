@@ -45,10 +45,15 @@ jobs:
 
   comment_plan:
     executor: default
+    parameters:
+      environment:
+        type: string
     steps:
       - checkout
       - attach_workspace:
           at: /tmp/terraform
+      - terraform/init:
+          backend_config_file: backends/<< parameters.environment >>.tfbackend
       - trade-tariff/comment-terraform-plan:
           path: tfplan
 
@@ -95,6 +100,7 @@ workflows:
 
       - comment_plan:
           name: comment_development_plan
+          environment: development
           context: trade-tariff-bot-github
           requires: [plan_development]
           filters:
