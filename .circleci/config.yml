@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.4
   terraform: circleci/terraform@3.2.0
 
 executors:
@@ -38,8 +37,12 @@ jobs:
       - terraform/plan:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
           out: tfplan
-      - trade-tariff/comment-terraform-plan:
-          path: tfplan
+      - run:
+          name: Install dependencies
+          command: apk add jq jo curl
+      - run:
+          name: Comment on PR
+          command: ./.circleci/comment_plan.sh << parameters.environment >> tfplan
 
   apply_terraform:
     executor: default
