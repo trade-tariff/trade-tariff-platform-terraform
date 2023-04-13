@@ -39,7 +39,7 @@ jobs:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
           out: tfplan
       - persist_to_workspace:
-          root: .
+          root: /tmp/terraform
           paths:
             - tfplan
 
@@ -48,7 +48,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: /tmp/terraform
       - trade-tariff/comment-terraform-plan:
           path: tfplan
 
