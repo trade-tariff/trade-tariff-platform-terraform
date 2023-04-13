@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   terraform: circleci/terraform@3.2.0
+  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.4
 
 executors:
   default:
