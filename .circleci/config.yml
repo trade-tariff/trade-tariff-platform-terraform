@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.3
+  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.4
   terraform: circleci/terraform@3.2.0
 
 executors:
