@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  terraform: "circleci/terraform@3.1.0"
+  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.1
 
 executors:
   default:
@@ -36,6 +36,11 @@ jobs:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
       - terraform/plan:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
+          out: tfplan
+      - persist_to_workspace:
+          root: .
+          paths:
+            - tfplan
 
   apply_terraform:
     executor: default
@@ -61,6 +66,13 @@ workflows:
               ignore:
                 - main
 
+      - trade-tariff/hide-expired-comments:
+          context: trade-tariff-bot-github
+          filters:
+            branches:
+              ignore:
+                - main
+
       - plan_terraform:
           name: plan_development
           environment: development
@@ -71,25 +83,34 @@ workflows:
               ignore:
                 - main
 
-      - plan_terraform:
-          name: plan_staging
-          environment: staging
-          context: trade-tariff-bot-aws-staging
-          requires: [fmt_validate_terraform]
+      - trade-tariff/comment-terraform-plan:
+          name: comment_development_plan
+          context: trade-tariff-bot-aws-development
+          requires: [plan_development]
           filters:
             branches:
               ignore:
                 - main
 
-      - plan_terraform:
-          name: plan_production
-          environment: production
-          context: trade-tariff-bot-aws-production
-          requires: [fmt_validate_terraform]
-          filters:
-            branches:
-              ignore:
-                - main
+      # - plan_terraform:
+      #     name: plan_staging
+      #     environment: staging
+      #     context: trade-tariff-bot-aws-staging
+      #     requires: [fmt_validate_terraform]
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - main
+
+      # - plan_terraform:
+      #     name: plan_production
+      #     environment: production
+      #     context: trade-tariff-bot-aws-production
+      #     requires: [fmt_validate_terraform]
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - main
 
       - apply_terraform:
           name: apply_development
@@ -100,30 +121,30 @@ workflows:
               only:
                 - main
 
-      - apply_terraform:
-          name: apply_staging
-          environment: staging
-          context: trade-tariff-bot-aws-staging
-          requires: [apply_development]
-          filters:
-            branches:
-              only:
-                - main
+      # - apply_terraform:
+      #     name: apply_staging
+      #     environment: staging
+      #     context: trade-tariff-bot-aws-staging
+      #     requires: [apply_development]
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - hold_apply_production:
-          type: approval
-          requires: [apply_staging]
-          filters:
-            branches:
-              only:
-                - main
+      # - hold_apply_production:
+      #     type: approval
+      #     requires: [apply_staging]
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - apply_terraform:
-          name: apply_production
-          environment: production
-          context: trade-tariff-bot-aws-production
-          requires: [hold_apply_production]
-          filters:
-            branches:
-              only:
-                - main
+      # - apply_terraform:
+      #     name: apply_production
+      #     environment: production
+      #     context: trade-tariff-bot-aws-production
+      #     requires: [hold_apply_production]
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
