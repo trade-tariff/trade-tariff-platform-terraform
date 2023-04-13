@@ -38,17 +38,6 @@ jobs:
       - terraform/plan:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
           out: tfplan
-      - persist_to_workspace:
-          root: /tmp/terraform
-          paths:
-            - tfplan
-
-  comment_plan:
-    executor: default
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /tmp/terraform
       - trade-tariff/comment-terraform-plan:
           path: tfplan
 
@@ -88,15 +77,6 @@ workflows:
           environment: development
           context: trade-tariff-bot-aws-development
           requires: [fmt_validate_terraform]
-          filters:
-            branches:
-              ignore:
-                - main
-
-      - comment_plan:
-          name: comment_development_plan
-          context: trade-tariff-bot-github
-          requires: [plan_development]
           filters:
             branches:
               ignore:
