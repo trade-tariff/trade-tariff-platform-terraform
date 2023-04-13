@@ -87,6 +87,7 @@ workflows:
       - trade-tariff/comment-terraform-plan:
           name: comment_development_plan
           context: trade-tariff-bot-github
+          path: /tmp/terraform/tfplan
           requires: [plan_development]
           filters:
             branches:
