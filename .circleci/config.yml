@@ -56,7 +56,7 @@ jobs:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
       - run:
           name: Comment Plan
-          command: ./circleci/plan.sh << parameters.environment >>
+          command: ./.circleci/plan.sh << parameters.environment >>
 
   apply_terraform:
     executor: default
