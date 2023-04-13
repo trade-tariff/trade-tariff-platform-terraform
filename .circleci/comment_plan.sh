@@ -14,7 +14,7 @@ if [ "$(echo "${pr_response}" | jq length)" -eq 0 ]; then
   exit 0
 fi
 
-if [ "$(echo "${pr_response}" | jq .message)" = "Bad credentials" ]; then
+if [ "$(echo "${pr_response}" | jq --raw-output .message)" = "Bad credentials" ]; then
   echo "Bad GitHub credentials; check the values of GITHUB_TOKEN and GITHUB_USER."
   exit 1
 fi
