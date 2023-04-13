@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.1
+  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.2
   terraform: circleci/terraform@3.2.0
 
 executors:
@@ -86,7 +86,7 @@ workflows:
 
       - trade-tariff/comment-terraform-plan:
           name: comment_development_plan
-          context: trade-tariff-bot-aws-development
+          context: trade-tariff-bot-github
           requires: [plan_development]
           filters:
             branches:
