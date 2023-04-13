@@ -54,8 +54,9 @@ jobs:
           at: /tmp/terraform
       - terraform/init:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
-      - trade-tariff/comment-terraform-plan:
-          path: tfplan
+      - run:
+          name: Comment Plan
+          command: ./circleci/plan.sh << parameters.environment >>
 
   apply_terraform:
     executor: default
