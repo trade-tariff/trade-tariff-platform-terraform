@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   terraform: circleci/terraform@3.2.0
-  trade-tariff: trade-tariff/trade-tariff-ci-orb@0.3.4
 
 executors:
   default:
@@ -37,30 +36,6 @@ jobs:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
       - terraform/plan:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
-          out: tfplan
-      - persist_to_workspace:
-          root: .
-          paths:
-            - tfplan
-
-  comment:
-    executor: default
-    parameters:
-      environment:
-        type: string
-    steps:
-      - checkout
-      - terraform/init:
-          backend_config_file: backends/<< parameters.environment >>.tfbackend
-      - run:
-          name: Install dependencies
-          command: apk add jq jo curl
-      - attach_workspace:
-          at: .
-      - run:
-          name: Comment on PR
-          command: |
-            ./.circleci/comment_plan.sh << parameters.environment >> ./tfplan
 
   apply_terraform:
     executor: default
@@ -86,18 +61,11 @@ workflows:
               ignore:
                 - main
 
-      - trade-tariff/hide-expired-comments:
-          context: trade-tariff-bot-github
-          filters:
-            branches:
-              ignore:
-                - main
-
       - plan_terraform:
           name: plan_development
           environment: development
           context: trade-tariff-bot-aws-development
-          requires: [fmt_validate_terraform, trade-tariff/hide-expired-comments]
+          requires: [fmt_validate_terraform]
           filters:
             branches:
               ignore:
