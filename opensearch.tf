@@ -11,9 +11,12 @@ module "opensearch" {
   instance_type           = "m6g.xlarge.search"
   ebs_volume_size         = 80
 
-  create_master_user = true
+  create_master_user   = false
+  master_user_username = var.opensearch_master_username
+  master_user_password = var.opensearch_master_password
 
-  ssm_secret_name = "/${var.environment}/common/ELASTICSEARCH_URL"
+  # TODO: move to /env/common/ELASTICSEARCH_URL
+  ssm_secret_name = "/${var.environment}/ELASTICSEARCH_URL"
 
   tags = local.tags
 }

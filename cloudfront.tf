@@ -12,6 +12,7 @@ module "cdn" {
 
   aliases         = local.cdn_aliases
   route53_zone_id = data.aws_route53_zone.selected.id
+  comment         = "${title(var.environment)} CDN"
 
   enabled         = true
   is_ipv6_enabled = true

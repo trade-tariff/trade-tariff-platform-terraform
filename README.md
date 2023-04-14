@@ -74,7 +74,10 @@ contexts are used for each environment.
 |------|------|
 | [aws_cloudfront_cache_policy.cache_all_qsa](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_cache_policy) | resource |
 | [aws_cloudfront_origin_request_policy.forward_all_qsa](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_origin_request_policy) | resource |
+| [aws_iam_access_key.service_account](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_access_key) | resource |
 | [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_policy) | resource |
+| [aws_iam_user.service_account](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user) | resource |
+| [aws_iam_user_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user_policy_attachment) | resource |
 | [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_public_access_block) | resource |
@@ -85,8 +88,10 @@ contexts are used for each environment.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | `"eu-west-2"` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | n/a | yes |
 | <a name="input_new_relic_licence_key"></a> [new\_relic\_licence\_key](#input\_new\_relic\_licence\_key) | New Relic API key. | `string` | n/a | yes |
+| <a name="input_opensearch_master_password"></a> [opensearch\_master\_password](#input\_opensearch\_master\_password) | Opensearch cluster master user password. | `string` | n/a | yes |
+| <a name="input_opensearch_master_username"></a> [opensearch\_master\_username](#input\_opensearch\_master\_username) | Opensearch cluster master user username. | `string` | n/a | yes |
 | <a name="input_tariff_admin_bearer_token"></a> [tariff\_admin\_bearer\_token](#input\_tariff\_admin\_bearer\_token) | Admin tool bearer token. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_id"></a> [tariff\_admin\_oauth\_id](#input\_tariff\_admin\_oauth\_id) | Admin tool OAuth ID. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_secret"></a> [tariff\_admin\_oauth\_secret](#input\_tariff\_admin\_oauth\_secret) | Admin tool OAuth secret. | `string` | n/a | yes |
@@ -115,5 +120,7 @@ contexts are used for each environment.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_service_account_secret_key"></a> [service\_account\_secret\_key](#output\_service\_account\_secret\_key) | TODO: don't do this once we've migrated off Gov PaaS |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

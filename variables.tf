@@ -1,7 +1,6 @@
 variable "environment" {
   description = "Deployment environment."
   type        = string
-  default     = "eu-west-2"
 }
 
 variable "waf_rpm_limit" {
@@ -12,6 +11,17 @@ variable "waf_rpm_limit" {
 
 variable "new_relic_licence_key" {
   description = "New Relic API key."
+  type        = string
+  sensitive   = true
+}
+
+variable "opensearch_master_username" {
+  description = "Opensearch cluster master user username."
+  type        = string
+  sensitive   = true
+}
+variable "opensearch_master_password" {
+  description = "Opensearch cluster master user password."
   type        = string
   sensitive   = true
 }
