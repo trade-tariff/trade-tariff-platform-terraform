@@ -90,6 +90,8 @@ contexts are used for each environment.
 |------|-------------|------|---------|:--------:|
 | <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | n/a | yes |
 | <a name="input_new_relic_licence_key"></a> [new\_relic\_licence\_key](#input\_new\_relic\_licence\_key) | New Relic API key. | `string` | n/a | yes |
+| <a name="input_opensearch_master_password"></a> [opensearch\_master\_password](#input\_opensearch\_master\_password) | Opensearch cluster master user password. | `string` | n/a | yes |
+| <a name="input_opensearch_master_username"></a> [opensearch\_master\_username](#input\_opensearch\_master\_username) | Opensearch cluster master user username. | `string` | n/a | yes |
 | <a name="input_tariff_admin_bearer_token"></a> [tariff\_admin\_bearer\_token](#input\_tariff\_admin\_bearer\_token) | Admin tool bearer token. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_id"></a> [tariff\_admin\_oauth\_id](#input\_tariff\_admin\_oauth\_id) | Admin tool OAuth ID. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_secret"></a> [tariff\_admin\_oauth\_secret](#input\_tariff\_admin\_oauth\_secret) | Admin tool OAuth secret. | `string` | n/a | yes |

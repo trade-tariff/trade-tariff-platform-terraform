@@ -14,3 +14,14 @@ variable "new_relic_licence_key" {
   type        = string
   sensitive   = true
 }
+
+variable "opensearch_master_username" {
+  description = "Opensearch cluster master user username."
+  type        = string
+  sensitive   = true
+}
+variable "opensearch_master_password" {
+  description = "Opensearch cluster master user password."
+  type        = string
+  sensitive   = true
+}
