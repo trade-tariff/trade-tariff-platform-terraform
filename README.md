@@ -85,7 +85,7 @@ contexts are used for each environment.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | `"eu-west-2"` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Deployment environment. | `string` | n/a | yes |
 | <a name="input_new_relic_licence_key"></a> [new\_relic\_licence\_key](#input\_new\_relic\_licence\_key) | New Relic API key. | `string` | n/a | yes |
 | <a name="input_tariff_admin_bearer_token"></a> [tariff\_admin\_bearer\_token](#input\_tariff\_admin\_bearer\_token) | Admin tool bearer token. | `string` | n/a | yes |
 | <a name="input_tariff_admin_oauth_id"></a> [tariff\_admin\_oauth\_id](#input\_tariff\_admin\_oauth\_id) | Admin tool OAuth ID. | `string` | n/a | yes |

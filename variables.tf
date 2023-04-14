@@ -1,7 +1,6 @@
 variable "environment" {
   description = "Deployment environment."
   type        = string
-  default     = "eu-west-2"
 }
 
 variable "waf_rpm_limit" {
