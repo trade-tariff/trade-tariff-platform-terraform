@@ -74,7 +74,10 @@ contexts are used for each environment.
 |------|------|
 | [aws_cloudfront_cache_policy.cache_all_qsa](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_cache_policy) | resource |
 | [aws_cloudfront_origin_request_policy.forward_all_qsa](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_origin_request_policy) | resource |
+| [aws_iam_access_key.service_account](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_access_key) | resource |
 | [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_policy) | resource |
+| [aws_iam_user.service_account](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user) | resource |
+| [aws_iam_user_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user_policy_attachment) | resource |
 | [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_public_access_block) | resource |
