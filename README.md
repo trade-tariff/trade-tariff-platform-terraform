@@ -118,5 +118,7 @@ contexts are used for each environment.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_service_account_secret_key"></a> [service\_account\_secret\_key](#output\_service\_account\_secret\_key) | TODO: don't do this once we've migrated off Gov PaaS |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
