@@ -13,7 +13,8 @@ module "opensearch" {
 
   create_master_user = true
 
-  ssm_secret_name = "/${var.environment}/common/ELASTICSEARCH_URL"
+  # TODO: move to /env/common/ELASTICSEARCH_URL
+  ssm_secret_name = "/${var.environment}/ELASTICSEARCH_URL"
 
   tags = local.tags
 }
