@@ -49,6 +49,35 @@ jobs:
       - terraform/apply:
           backend_config_file: backends/<< parameters.environment >>.tfbackend
 
+  smoketest:
+    docker:
+      - image: cypress/base:16.5.0
+    parameters:
+      url:
+        type: string
+      environment:
+        type: string
+    steps:
+      - run:
+          name: "Checkout tests repo"
+          command: git clone --depth=1 "https://github.com/trade-tariff/trade-tariff-testing/"
+      - restore_cache:
+          keys:
+            - v2-smoketest-deps-{{ checksum "trade-tariff-testing/yarn.lock" }}
+      - run:
+          name: "Install NPM packages"
+          command: "cd trade-tariff-testing && yarn install"
+      - save_cache:
+          key: v2-smoketest-deps-{{ checksum "trade-tariff-testing/yarn.lock" }}
+          paths:
+            - trade-tariff-testing/node_modules
+            - /root/.cache/Cypress
+      - run:
+          name: "Cypress Smoke tests"
+          command: |
+            cd trade-tariff-testing
+            yarn run << parameters.environment >>-tariff-infrastructure-smoketests
+
 workflows:
   version: 2
   terraform:
@@ -71,15 +100,15 @@ workflows:
               ignore:
                 - main
 
-      # - plan_terraform:
-      #     name: plan_staging
-      #     environment: staging
-      #     context: trade-tariff-bot-aws-staging
-      #     requires: [fmt_validate_terraform]
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - main
+      - plan_terraform:
+          name: plan_staging
+          environment: staging
+          context: trade-tariff-bot-aws-staging
+          requires: [fmt_validate_terraform]
+          filters:
+            branches:
+              ignore:
+                - main
 
       # - plan_terraform:
       #     name: plan_production
@@ -95,6 +124,18 @@ workflows:
           name: apply_development
           environment: development
           context: trade-tariff-bot-aws-development
+          filters:
+            branches:
+              only:
+                - main
+
+      - smoketest:
+          name: smoketest_development
+          environment: dev
+          url: https://dev.trade-tariff.service.gov.uk
+          context: trade-tariff
+          requires:
+            - apply_development
           filters:
             branches:
               only:
