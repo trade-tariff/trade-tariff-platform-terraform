@@ -56,7 +56,7 @@ resource "aws_iam_policy" "this" {
           local.bucket_permissions.permissive
         ])
         Effect = "Allow"
-        Resources = [
+        Resource = [
           aws_s3_bucket.this[each.key].arn,
           "${aws_s3_bucket.this[each.key].arn}/*"
         ]
