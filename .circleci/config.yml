@@ -71,16 +71,6 @@ workflows:
               ignore:
                 - main
 
-      - comment:
-          name: comment_development
-          environment: development
-          context: trade-tariff-bot-github
-          requires: [plan_development]
-          filters:
-            branches:
-              ignore:
-                - main
-
       # - plan_terraform:
       #     name: plan_staging
       #     environment: staging
