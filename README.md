@@ -110,12 +110,12 @@ contexts are used for each environment.
 | <a name="input_tariff_frontend_secret_key_base"></a> [tariff\_frontend\_secret\_key\_base](#input\_tariff\_frontend\_secret\_key\_base) | Frontend secret key base. | `string` | n/a | yes |
 | <a name="input_tariff_frontend_sentry_dsn"></a> [tariff\_frontend\_sentry\_dsn](#input\_tariff\_frontend\_sentry\_dsn) | Frontend Sentry DSN. | `string` | n/a | yes |
 | <a name="input_tariff_search_query_parser_sentry_dsn"></a> [tariff\_search\_query\_parser\_sentry\_dsn](#input\_tariff\_search\_query\_parser\_sentry\_dsn) | Search query parser Sentry DSN. | `string` | n/a | yes |
-| <a name="input_tariff_signon_active_record_derivation_salt"></a> [tariff\_signon\_active\_record\_derivation\_salt](#input\_tariff\_signon\_active\_record\_derivation\_salt) | Tariff Signon Active Record Encryption Key Derivation Salt. | `string` | n/a | yes |
-| <a name="input_tariff_signon_active_record_primary_key"></a> [tariff\_signon\_active\_record\_primary\_key](#input\_tariff\_signon\_active\_record\_primary\_key) | Tariff Signon Active Record Encryption Primary Key. | `string` | n/a | yes |
-| <a name="input_tariff_signon_devise_pepper"></a> [tariff\_signon\_devise\_pepper](#input\_tariff\_signon\_devise\_pepper) | Tariff Signon Devise Pepper. | `string` | n/a | yes |
-| <a name="input_tariff_signon_devise_secret_key"></a> [tariff\_signon\_devise\_secret\_key](#input\_tariff\_signon\_devise\_secret\_key) | Tariff Signon Devise Secret Key. | `string` | n/a | yes |
-| <a name="input_tariff_signon_redis_url"></a> [tariff\_signon\_redis\_url](#input\_tariff\_signon\_redis\_url) | Tariff Signon Redis URL. | `string` | n/a | yes |
-| <a name="input_tariff_signon_secret_key_base"></a> [tariff\_signon\_secret\_key\_base](#input\_tariff\_signon\_secret\_key\_base) | Tariff Signon Secret Key Base. | `string` | n/a | yes |
+| <a name="input_tariff_signon_active_record_derivation_salt"></a> [tariff\_signon\_active\_record\_derivation\_salt](#input\_tariff\_signon\_active\_record\_derivation\_salt) | Tariff Signon Active Record Encryption Key Derivation Salt. | `string` | `""` | no |
+| <a name="input_tariff_signon_active_record_primary_key"></a> [tariff\_signon\_active\_record\_primary\_key](#input\_tariff\_signon\_active\_record\_primary\_key) | Tariff Signon Active Record Encryption Primary Key. | `string` | `""` | no |
+| <a name="input_tariff_signon_devise_pepper"></a> [tariff\_signon\_devise\_pepper](#input\_tariff\_signon\_devise\_pepper) | Tariff Signon Devise Pepper. | `string` | `""` | no |
+| <a name="input_tariff_signon_devise_secret_key"></a> [tariff\_signon\_devise\_secret\_key](#input\_tariff\_signon\_devise\_secret\_key) | Tariff Signon Devise Secret Key. | `string` | `""` | no |
+| <a name="input_tariff_signon_redis_url"></a> [tariff\_signon\_redis\_url](#input\_tariff\_signon\_redis\_url) | Tariff Signon Redis URL. | `string` | `""` | no |
+| <a name="input_tariff_signon_secret_key_base"></a> [tariff\_signon\_secret\_key\_base](#input\_tariff\_signon\_secret\_key\_base) | Tariff Signon Secret Key Base. | `string` | `""` | no |
 | <a name="input_waf_rpm_limit"></a> [waf\_rpm\_limit](#input\_waf\_rpm\_limit) | Request per minute limit for the WAF. | `number` | `100` | no |
 
 ## Outputs

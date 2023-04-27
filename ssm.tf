@@ -10,6 +10,6 @@ module "ssm" {
     local.duty_calculator_vars,
     local.frontend_vars,
     local.search_query_parser_vars,
-    local.signon_vars
+    [var.environment == "development" ? local.signon_vars : []]
   ])
 }
