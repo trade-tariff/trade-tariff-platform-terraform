@@ -141,15 +141,27 @@ workflows:
               only:
                 - main
 
-      # - apply_terraform:
-      #     name: apply_staging
-      #     environment: staging
-      #     context: trade-tariff-bot-aws-staging
-      #     requires: [apply_development]
-      #     filters:
-      #       branches:
-      #         only:
-      #           - main
+      - apply_terraform:
+          name: apply_staging
+          environment: staging
+          context: trade-tariff-bot-aws-staging
+          requires: [apply_development]
+          filters:
+            branches:
+              only:
+                - main
+
+      - smoketest:
+          name: smoketest_staging
+          environment: dev
+          url: https://staging.trade-tariff.service.gov.uk
+          context: trade-tariff
+          requires:
+            - apply_staging
+          filters:
+            branches:
+              only:
+                - main
 
       # - hold_apply_production:
       #     type: approval
