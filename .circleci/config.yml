@@ -110,15 +110,15 @@ workflows:
               ignore:
                 - main
 
-      # - plan_terraform:
-      #     name: plan_production
-      #     environment: production
-      #     context: trade-tariff-bot-aws-production
-      #     requires: [fmt_validate_terraform]
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - main
+      - plan_terraform:
+          name: plan_production
+          environment: production
+          context: trade-tariff-bot-aws-production
+          requires: [fmt_validate_terraform]
+          filters:
+            branches:
+              ignore:
+                - main
 
       - apply_terraform:
           name: apply_development
@@ -163,20 +163,32 @@ workflows:
               only:
                 - main
 
-      # - hold_apply_production:
-      #     type: approval
-      #     requires: [apply_staging]
-      #     filters:
-      #       branches:
-      #         only:
-      #           - main
+      - hold_apply_production:
+          type: approval
+          requires: [apply_staging]
+          filters:
+            branches:
+              only:
+                - main
 
-      # - apply_terraform:
-      #     name: apply_production
-      #     environment: production
-      #     context: trade-tariff-bot-aws-production
-      #     requires: [hold_apply_production]
-      #     filters:
-      #       branches:
-      #         only:
-      #           - main
+      - apply_terraform:
+          name: apply_production
+          environment: production
+          context: trade-tariff-bot-aws-production
+          requires: [hold_apply_production]
+          filters:
+            branches:
+              only:
+                - main
+
+      - smoketest:
+          name: smoketest_production
+          environment: dev
+          url: https://www.trade-tariff.service.gov.uk
+          context: trade-tariff
+          requires:
+            - apply_production
+          filters:
+            branches:
+              only:
+                - main

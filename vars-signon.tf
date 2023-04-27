@@ -55,34 +55,40 @@ variable "tariff_signon_devise_pepper" {
   description = "Tariff Signon Devise Pepper."
   type        = string
   sensitive   = true
+  default     = "" # signon only runs on dev
 }
 
 variable "tariff_signon_devise_secret_key" {
   description = "Tariff Signon Devise Secret Key."
   type        = string
   sensitive   = true
+  default     = "" # signon only runs on dev
 }
 
 variable "tariff_signon_active_record_derivation_salt" {
   description = "Tariff Signon Active Record Encryption Key Derivation Salt."
   type        = string
   sensitive   = true
+  default     = "" # signon only runs on dev
 }
 
 variable "tariff_signon_active_record_primary_key" {
   description = "Tariff Signon Active Record Encryption Primary Key."
   type        = string
   sensitive   = true
+  default     = "" # signon only runs on dev
 }
 
 variable "tariff_signon_secret_key_base" {
   description = "Tariff Signon Secret Key Base."
   type        = string
   sensitive   = true
+  default     = "" # signon only runs on dev
 }
 
 variable "tariff_signon_redis_url" {
   description = "Tariff Signon Redis URL."
   type        = string
   sensitive   = true
+  default     = "" # signon only runs on dev
 }
