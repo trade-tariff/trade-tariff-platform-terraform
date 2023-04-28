@@ -23,6 +23,18 @@ resource "aws_s3_bucket_public_access_block" "this" {
   ignore_public_acls      = true
 }
 
+resource "aws_s3_bucket_website_configuration" "this" {
+  bucket = aws_s3_bucket.this["api_docs"].id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "404.html"
+  }
+}
+
 data "aws_iam_policy_document" "api_docs_s3_policy" {
   statement {
     actions   = ["s3:GetObject"]
