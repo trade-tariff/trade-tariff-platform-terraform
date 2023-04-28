@@ -1,8 +1,3 @@
-data "aws_route53_zone" "selected" {
-  name         = local.base_url
-  private_zone = false
-}
-
 data "aws_cloudfront_cache_policy" "caching_disabled" {
   name = "Managed-CachingDisabled"
 }
@@ -10,7 +5,7 @@ data "aws_cloudfront_cache_policy" "caching_disabled" {
 module "cdn" {
   source = "git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront?ref=aws/cloudfront-v1.0.1"
 
-  aliases         = local.cdn_aliases
+  aliases         = [local.cdn_alias]
   route53_zone_id = data.aws_route53_zone.selected.id
   comment         = "${title(var.environment)} CDN"
 

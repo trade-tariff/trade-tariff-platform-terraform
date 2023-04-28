@@ -28,3 +28,20 @@ resource "aws_s3_bucket_public_access_block" "this" {
   block_public_policy     = true
   ignore_public_acls      = true
 }
+
+data "aws_iam_policy_document" "api_docs_s3_policy" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.this["api_docs"].arn}/*"]
+
+    principals {
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.this.iam_arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "api_docs" {
+  bucket = aws_s3_bucket.this["api_docs"].id
+  policy = data.aws_iam_policy_document.api_docs_s3_policy.json
+}
