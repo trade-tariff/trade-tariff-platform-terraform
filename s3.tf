@@ -3,6 +3,7 @@ locals {
     persistence          = "${local.project}-persistence-${var.environment}"
     opensearch_packages  = "${local.project}-opensearch-packages-${var.environment}"
     search_configuration = "${local.project}-search-configuration-${var.environment}"
+    api_docs             = "${local.project}-api-docs-${var.environment}"
   }
 }
 
