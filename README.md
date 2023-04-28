@@ -81,7 +81,6 @@ contexts are used for each environment.
 | [aws_iam_user.service_account](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user) | resource |
 | [aws_iam_user_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user_policy_attachment) | resource |
 | [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_acl.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_policy.api_docs](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_cloudfront_cache_policy.caching_disabled](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/data-sources/cloudfront_cache_policy) | data source |

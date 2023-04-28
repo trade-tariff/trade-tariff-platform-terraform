@@ -13,12 +13,6 @@ resource "aws_s3_bucket" "this" {
   tags     = local.tags
 }
 
-resource "aws_s3_bucket_acl" "this" {
-  for_each = local.buckets
-  bucket   = each.value
-  acl      = "private"
-}
-
 resource "aws_s3_bucket_public_access_block" "this" {
   for_each = local.buckets
   bucket   = aws_s3_bucket.this[each.key].id
