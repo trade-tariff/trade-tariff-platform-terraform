@@ -145,7 +145,7 @@ workflows:
           name: apply_staging
           environment: staging
           context: trade-tariff-bot-aws-staging
-          requires: [apply_development]
+          requires: [smoketest_development]
           filters:
             branches:
               only:
@@ -165,7 +165,7 @@ workflows:
 
       - hold_apply_production:
           type: approval
-          requires: [apply_staging]
+          requires: [smoketest_staging]
           filters:
             branches:
               only:

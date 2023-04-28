@@ -63,6 +63,7 @@ contexts are used for each environment.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_acm"></a> [acm](#module\_acm) | git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/acm | aws/cloudfront-v1.0.1 |
+| <a name="module_api_docs_cloudfront"></a> [api\_docs\_cloudfront](#module\_api\_docs\_cloudfront) | git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront | aws/cloudfront-v1.0.1 |
 | <a name="module_cdn"></a> [cdn](#module\_cdn) | git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront | aws/cloudfront-v1.0.1 |
 | <a name="module_opensearch"></a> [opensearch](#module\_opensearch) | git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/opensearch | aws/opensearch-v1.0.0 |
 | <a name="module_ssm"></a> [ssm](#module\_ssm) | git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/ssm | aws/ssm-v1.0.0 |
@@ -73,6 +74,7 @@ contexts are used for each environment.
 | Name | Type |
 |------|------|
 | [aws_cloudfront_cache_policy.cache_all_qsa](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_cache_policy) | resource |
+| [aws_cloudfront_origin_access_identity.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_origin_access_identity) | resource |
 | [aws_cloudfront_origin_request_policy.forward_all_qsa](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/cloudfront_origin_request_policy) | resource |
 | [aws_iam_access_key.service_account](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_access_key) | resource |
 | [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_policy) | resource |
@@ -80,8 +82,10 @@ contexts are used for each environment.
 | [aws_iam_user_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/iam_user_policy_attachment) | resource |
 | [aws_s3_bucket.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_policy.api_docs](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.this](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_cloudfront_cache_policy.caching_disabled](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/data-sources/cloudfront_cache_policy) | data source |
+| [aws_iam_policy_document.api_docs_s3_policy](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/4.61.0/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
