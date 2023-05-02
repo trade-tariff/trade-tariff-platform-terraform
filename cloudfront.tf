@@ -67,9 +67,9 @@ module "cdn" {
 
   viewer_certificate = {
     ssl_support_method  = "sni-only"
-    acm_certificate_arn = module.acm.aws_acm_certificate_arn
+    acm_certificate_arn = module.cdn_certificate.aws_acm_certificate_arn
     depends_on = [
-      module.acm.aws_acm_certificate_arn
+      module.cdn_certificate.aws_acm_certificate_arn
     ]
   }
 }

@@ -16,6 +16,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
+  aliases             = [local.api_alias]
   comment             = "API Docs ${title(var.environment)} CDN"
   default_root_object = "index.html"
   enabled             = true
@@ -50,7 +51,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = module.acm.aws_acm_certificate_arn
+    acm_certificate_arn      = module.api_certificate.aws_acm_certificate_arn
     minimum_protocol_version = "TLSv1.2_2021"
     ssl_support_method       = "sni-only"
   }
@@ -66,7 +67,7 @@ resource "aws_cloudfront_distribution" "this" {
   }
 
   depends_on = [
-    module.acm.aws_acm_certificate_arn
+    module.api_certificate.aws_acm_certificate_arn
   ]
 }
 
