@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "this" {
     }
   }
 
-  aliases             = [local.api_alias]
+  aliases             = var.environment == "production" ? [] : [local.api_alias]
   comment             = "API Docs ${title(var.environment)} CDN"
   default_root_object = "index.html"
   enabled             = true
