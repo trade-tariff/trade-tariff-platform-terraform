@@ -11,6 +11,7 @@ locals {
   tags = {
     Project     = local.project
     Environment = var.environment
+    Billing     = "TRN.HMR11896"
   }
 }
 
