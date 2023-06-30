@@ -110,6 +110,24 @@ workflows:
               ignore:
                 - main
 
+      - hold_apply_development_from_branch:
+          type: approval
+          requires: [plan_development]
+          filters:
+            branches:
+              ignore:
+                - main
+
+      - apply_terraform:
+          name: apply_development_from_branch
+          environment: development
+          context: trade-tariff-bot-aws-development
+          requires: [hold_apply_development_from_branch]
+          filters:
+            branches:
+              ignore:
+                - main
+
       # - plan_terraform:
       #     name: plan_production
       #     environment: production
