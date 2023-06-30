@@ -80,7 +80,7 @@ module "cdn" {
 
 resource "aws_cloudfront_cache_policy" "cache_all_qsa" {
   name        = "Cache-All-QSA-${var.environment}"
-  comment     = "Cache all QSA (managed by Terraform)"
+  comment     = "Managed-CacheOptimized extended with Query String support (managed by Terraform)"
   default_ttl = 86400
   max_ttl     = 31536000
   min_ttl     = 1
@@ -108,7 +108,10 @@ resource "aws_cloudfront_origin_request_policy" "forward_all_qsa" {
   }
 
   headers_config {
-    header_behavior = "allViewer"
+    header_behavior = "allExcept"
+    headers {
+      items = []
+    }
   }
 
   query_strings_config {
