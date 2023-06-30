@@ -80,7 +80,7 @@ module "cdn" {
 
 resource "aws_cloudfront_cache_policy" "cache_all_qsa" {
   name        = "Cache-All-QSA-${var.environment}"
-  comment     = "Managed-CacheOptimized extended with Query String support (managed by Terraform)"
+  comment     = "Cache all QSA (managed by Terraform)"
   default_ttl = 86400
   max_ttl     = 31536000
   min_ttl     = 1
