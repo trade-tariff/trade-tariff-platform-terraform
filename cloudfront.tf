@@ -2,9 +2,9 @@ data "aws_cloudfront_cache_policy" "caching_disabled" {
   name = "Managed-CachingDisabled"
 }
 
-// data "aws_cloudfront_cache_policy" "caching_optimized" {
-//   name = "Managed-CachingOptimized"
-// }
+data "aws_cloudfront_cache_policy" "caching_optimized" {
+  name = "Managed-CachingOptimized"
+}
 
 module "cdn" {
   source = "git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront?ref=aws/cloudfront-v1.0.1"
