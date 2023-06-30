@@ -6,28 +6,6 @@ data "aws_cloudfront_cache_policy" "caching_optimized" {
   name = "Managed-CachingOptimized"
 }
 
-resource "aws_cloudfront_cache_policy" "caching_optimized_with_query_strings" {
-  name        = "TradeTariff-CachingOptimizedWithQueryStrings"
-  comment     = "Replicating Caching optimised policy but with support for query strings added"
-  default_ttl = 86400
-  max_ttl     = 31536000
-  min_ttl     = 1
-
-  parameters_in_cache_key_and_forwarded_to_origin {
-    cookies_config {
-      cookie_behavior = "none"
-    }
-
-    headers_config {
-      header_behavior = "none"
-    }
-
-    query_strings_config {
-      query_string_behavior = "all"
-    }
-  }
-}
-
 module "cdn" {
   source = "git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront?ref=aws/cloudfront-v1.0.1"
 
@@ -65,7 +43,7 @@ module "cdn" {
       target_origin_id       = "frontend-govpaas-${var.environment}"
       viewer_protocol_policy = "redirect-to-https"
 
-      cache_policy_id          = aws_cloudfront_cache_policy.caching_optimized_with_query_strings.id
+      cache_policy_id          = aws_cloudfront_cache_policy.cache_all_qsa.id
       origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
 
       min_ttl     = 0
