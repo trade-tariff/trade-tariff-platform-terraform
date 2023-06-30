@@ -108,7 +108,7 @@ resource "aws_cloudfront_origin_request_policy" "forward_all_qsa" {
   }
 
   headers_config {
-    header_behavior = "allExcept"
+    header_behavior = "allViewer"
     headers {
       items = ["If-None-Match", "If-Modified-Since"]
     }
