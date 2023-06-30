@@ -44,7 +44,7 @@ module "cdn" {
       viewer_protocol_policy = "redirect-to-https"
 
       cache_policy_id          = aws_cloudfront_cache_policy.cache_all_qsa.id
-      origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
+      // origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
 
       min_ttl     = 0
       default_ttl = 0
