@@ -51,6 +51,7 @@ module "cdn" {
       max_ttl     = 0
 
       compress = false
+      query_string = true
 
       allowed_methods = [
         "GET",
