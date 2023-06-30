@@ -100,95 +100,95 @@ workflows:
               ignore:
                 - main
 
-      - plan_terraform:
-          name: plan_staging
-          environment: staging
-          context: trade-tariff-bot-aws-staging
-          requires: [fmt_validate_terraform]
-          filters:
-            branches:
-              ignore:
-                - main
+      # - plan_terraform:
+      #     name: plan_staging
+      #     environment: staging
+      #     context: trade-tariff-bot-aws-staging
+      #     requires: [fmt_validate_terraform]
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - main
 
-      - plan_terraform:
-          name: plan_production
-          environment: production
-          context: trade-tariff-bot-aws-production
-          requires: [fmt_validate_terraform]
-          filters:
-            branches:
-              ignore:
-                - main
+      # - plan_terraform:
+      #     name: plan_production
+      #     environment: production
+      #     context: trade-tariff-bot-aws-production
+      #     requires: [fmt_validate_terraform]
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - main
 
-      - apply_terraform:
-          name: apply_development
-          environment: development
-          context: trade-tariff-bot-aws-development
-          filters:
-            branches:
-              only:
-                - main
+      # - apply_terraform:
+      #     name: apply_development
+      #     environment: development
+      #     context: trade-tariff-bot-aws-development
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - smoketest:
-          name: smoketest_development
-          environment: dev
-          url: https://dev.trade-tariff.service.gov.uk
-          context: trade-tariff
-          requires:
-            - apply_development
-          filters:
-            branches:
-              only:
-                - main
+      # - smoketest:
+      #     name: smoketest_development
+      #     environment: dev
+      #     url: https://dev.trade-tariff.service.gov.uk
+      #     context: trade-tariff
+      #     requires:
+      #       - apply_development
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - apply_terraform:
-          name: apply_staging
-          environment: staging
-          context: trade-tariff-bot-aws-staging
-          requires: [smoketest_development]
-          filters:
-            branches:
-              only:
-                - main
+      # - apply_terraform:
+      #     name: apply_staging
+      #     environment: staging
+      #     context: trade-tariff-bot-aws-staging
+      #     requires: [smoketest_development]
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - smoketest:
-          name: smoketest_staging
-          environment: dev
-          url: https://staging.trade-tariff.service.gov.uk
-          context: trade-tariff
-          requires:
-            - apply_staging
-          filters:
-            branches:
-              only:
-                - main
+      # - smoketest:
+      #     name: smoketest_staging
+      #     environment: dev
+      #     url: https://staging.trade-tariff.service.gov.uk
+      #     context: trade-tariff
+      #     requires:
+      #       - apply_staging
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - hold_apply_production:
-          type: approval
-          requires: [smoketest_staging]
-          filters:
-            branches:
-              only:
-                - main
+      # - hold_apply_production:
+      #     type: approval
+      #     requires: [smoketest_staging]
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - apply_terraform:
-          name: apply_production
-          environment: production
-          context: trade-tariff-bot-aws-production
-          requires: [hold_apply_production]
-          filters:
-            branches:
-              only:
-                - main
+      # - apply_terraform:
+      #     name: apply_production
+      #     environment: production
+      #     context: trade-tariff-bot-aws-production
+      #     requires: [hold_apply_production]
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
 
-      - smoketest:
-          name: smoketest_production
-          environment: dev
-          url: https://www.trade-tariff.service.gov.uk
-          context: trade-tariff
-          requires:
-            - apply_production
-          filters:
-            branches:
-              only:
-                - main
+      # - smoketest:
+      #     name: smoketest_production
+      #     environment: dev
+      #     url: https://www.trade-tariff.service.gov.uk
+      #     context: trade-tariff
+      #     requires:
+      #       - apply_production
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
