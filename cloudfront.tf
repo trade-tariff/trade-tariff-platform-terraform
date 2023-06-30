@@ -50,7 +50,7 @@ module "cdn" {
       default_ttl = 0
       max_ttl     = 0
 
-      compress = false
+      compress     = false
       query_string = true
 
       allowed_methods = [
