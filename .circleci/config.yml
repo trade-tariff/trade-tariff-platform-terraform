@@ -100,15 +100,15 @@ workflows:
               ignore:
                 - main
 
-      # - plan_terraform:
-      #     name: plan_staging
-      #     environment: staging
-      #     context: trade-tariff-bot-aws-staging
-      #     requires: [fmt_validate_terraform]
-      #     filters:
-      #       branches:
-      #         ignore:
-      #           - main
+      - plan_terraform:
+          name: plan_staging
+          environment: staging
+          context: trade-tariff-bot-aws-staging
+          requires: [fmt_validate_terraform]
+          filters:
+            branches:
+              ignore:
+                - main
 
       # - plan_terraform:
       #     name: plan_production
