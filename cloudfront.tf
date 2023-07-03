@@ -6,6 +6,10 @@ data "aws_cloudfront_cache_policy" "caching_optimized" {
   name = "Managed-CachingOptimized"
 }
 
+data "aws_cloudfront_origin_request_policy" "all_viewer_except_host_header" {
+  name = "Managed-AllViewerExceptHostHeader"
+}
+
 module "cdn" {
   source = "git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront?ref=aws/cloudfront-v1.0.1"
 
@@ -44,7 +48,7 @@ module "cdn" {
       viewer_protocol_policy = "redirect-to-https"
 
       cache_policy_id          = aws_cloudfront_cache_policy.cache_all_qsa.id
-      origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
+      origin_request_policy_id = data.aws_cloudfront_origin_request_policy.all_viewer_except_host_header.id
 
       min_ttl     = 0
       default_ttl = 0
