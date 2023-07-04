@@ -108,7 +108,7 @@ resource "aws_cloudfront_origin_request_policy" "forward_all_qsa" {
   }
 
   headers_config {
-    header_behavior = "none"
+    header_behavior = "allViewer"
   }
 
   query_strings_config {
