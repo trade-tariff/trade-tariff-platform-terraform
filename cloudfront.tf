@@ -2,10 +2,6 @@ data "aws_cloudfront_cache_policy" "caching_disabled" {
   name = "Managed-CachingDisabled"
 }
 
-data "aws_cloudfront_cache_policy" "caching_optimized" {
-  name = "Managed-CachingOptimized"
-}
-
 module "cdn" {
   source = "git@github.com:trade-tariff/trade-tariff-platform-terraform-modules.git//aws/cloudfront?ref=aws/cloudfront-v1.0.1"
 
@@ -43,12 +39,12 @@ module "cdn" {
       target_origin_id       = "frontend-govpaas-${var.environment}"
       viewer_protocol_policy = "redirect-to-https"
 
-      cache_policy_id          = aws_cloudfront_cache_policy.cache_all_qsa.id
+      cache_policy_id          = data.aws_cloudfront_cache_policy.caching_disabled.id
       origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
 
       min_ttl     = 0
-      default_ttl = 86400
-      max_ttl     = 31536000
+      default_ttl = 0
+      max_ttl     = 0
 
       compress = false
 
@@ -83,7 +79,7 @@ resource "aws_cloudfront_cache_policy" "cache_all_qsa" {
   comment     = "Cache all QSA (managed by Terraform)"
   default_ttl = 86400
   max_ttl     = 31536000
-  min_ttl     = 0
+  min_ttl     = 1
 
   parameters_in_cache_key_and_forwarded_to_origin {
     cookies_config {
@@ -108,10 +104,7 @@ resource "aws_cloudfront_origin_request_policy" "forward_all_qsa" {
   }
 
   headers_config {
-    header_behavior = "allExcept"
-    headers {
-      items = ["If-None-Match", "If-Modified-Since", "Host", "X-Forwarded-For"]
-    }
+    header_behavior = "allViewer"
   }
 
   query_strings_config {
