@@ -39,12 +39,12 @@ module "cdn" {
       target_origin_id       = "frontend-govpaas-${var.environment}"
       viewer_protocol_policy = "redirect-to-https"
 
-      cache_policy_id          = data.aws_cloudfront_cache_policy.caching_disabled.id
-      origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
+      cache_policy_id = data.aws_cloudfront_cache_policy.caching_disabled.id
+      // origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all_qsa.id
 
       min_ttl     = 0
-      default_ttl = 0
-      max_ttl     = 0
+      default_ttl = 86400
+      max_ttl     = 31536000
 
       compress = false
 
@@ -79,7 +79,7 @@ resource "aws_cloudfront_cache_policy" "cache_all_qsa" {
   comment     = "Cache all QSA (managed by Terraform)"
   default_ttl = 86400
   max_ttl     = 31536000
-  min_ttl     = 1
+  min_ttl     = 0
 
   parameters_in_cache_key_and_forwarded_to_origin {
     cookies_config {
